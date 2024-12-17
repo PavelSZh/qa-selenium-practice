@@ -20,7 +20,7 @@ public class GoogleSearchTest {
     @BeforeMethod
     public void preparations() {
         // Инициализация драйвера в методе @BeforeMethod
-       // System.setProperty("webdriver.chrome.driver", "/path/to/chromedriver");
+        System.setProperty("webdriver.chrome.driver", "/path/to/chromedriver");
         driver = new ChromeDriver();
         wait = new WebDriverWait(driver, Duration.ofSeconds(5));
         driver.get("https://the-internet.herokuapp.com/");
