@@ -1,7 +1,9 @@
+import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
@@ -19,9 +21,14 @@ public class GoogleSearchTest {
 
     @BeforeMethod
     public void preparations() {
-        // Инициализация драйвера в методе @BeforeMethod
-        System.setProperty("webdriver.chrome.driver", "/path/to/chromedriver");
-        driver = new ChromeDriver();
+        WebDriverManager.chromedriver().setup();
+
+        ChromeOptions options = new ChromeOptions();
+        options.addArguments("--headless");  // Безголовый режим
+        options.addArguments("--disable-gpu");  // Отключение GPU
+        options.addArguments("--no-sandbox");  // Отключение песочницы
+        driver = new ChromeDriver(options);  // Используем Chrome с опциями
+
         wait = new WebDriverWait(driver, Duration.ofSeconds(5));
         driver.get("https://the-internet.herokuapp.com/");
         driver.manage().window().maximize();

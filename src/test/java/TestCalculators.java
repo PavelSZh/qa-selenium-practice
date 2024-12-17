@@ -2,6 +2,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
@@ -18,9 +19,15 @@ public class TestCalculators {
     private WebDriverWait wait;
 
     @BeforeMethod
-    public void preparations (){
+    public void preparations () {
         WebDriverManager.chromedriver().setup();
-        driver = new ChromeDriver();
+
+        ChromeOptions options = new ChromeOptions();
+        options.addArguments("--headless");  // Безголовый режим
+        options.addArguments("--disable-gpu");  // Отключение GPU
+        options.addArguments("--no-sandbox");  // Отключение песочницы
+        driver = new ChromeDriver(options);  // Используем Chrome с опциями
+
         wait = new WebDriverWait(driver, Duration.ofSeconds(5));
         driver.get("https://calculator888.ru/kalkulator-drobey");
         driver.manage().window().maximize();
