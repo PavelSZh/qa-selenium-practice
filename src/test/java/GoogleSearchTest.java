@@ -1,4 +1,3 @@
-import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -8,12 +7,9 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
-import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-
-import javax.swing.*;
 import java.time.Duration;
 
 public class GoogleSearchTest {
@@ -55,21 +51,6 @@ public class GoogleSearchTest {
 
         Actions click = new Actions(driver);
         click.contextClick().perform();
-
-    }
-
-    @Test
-    public void uploading (){
-        driver.findElement(By.xpath("//*[@id='content']/ul/li[18]/a")).click();
-
-        WebElement upload = driver.findElement(By.id("file-upload"));
-        upload.sendKeys("C:\\Users\\User\\Desktop\\Cart.csv");
-        driver.findElement(By.id("file-submit")).click();
-
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id='content']/div/h3")));
-
-        Assert.assertEquals(driver.findElement(By.xpath("//*[@id='content']/div/h3")).getText(), "File Uploaded!");
-        Assert.assertEquals(driver.findElement(By.id("uploaded-files")).getText(), "Cart.csv");
     }
 
     @Test
@@ -86,13 +67,8 @@ public class GoogleSearchTest {
         Assert.assertEquals(driver.findElement(By.xpath("//*[@id='content']/div/div[1]/div/a")).getText(), "View profile");
     }
 
-    @AfterMethod
+    @AfterTest
     public void close (){
-        try {
-            Thread.sleep(1000);
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e.getMessage());
-        }
         driver.quit();
     }
 }

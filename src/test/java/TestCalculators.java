@@ -1,13 +1,10 @@
-import net.bytebuddy.asm.Advice;
 import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
-import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -30,7 +27,6 @@ public class TestCalculators {
         WebElement firstSign = driver.findElement(By.cssSelector("#celoe_1"));
         firstSign.click();
         firstSign.sendKeys("-");
-        //firstSign.sendKeys(Keys.ENTER);
 
         WebElement firstDividend = driver.findElement(By.cssSelector("#chslt_1"));
         firstDividend.click();
@@ -62,28 +58,22 @@ public class TestCalculators {
         Assert.assertEquals(resultSign.getText(), "- ");
         Assert.assertEquals(resultDividend.getText(), " 1 ");
         Assert.assertEquals(resultDivider.getText(), " 4 ");
-
-        try {
-            Thread.sleep(3000);
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e.getMessage());
-        }
     }
 
     @Test
-    public void actionTest() throws InterruptedException {
+    public void actionTest() {
 
         WebElement calculate = driver.findElement(By.xpath("//*[@id='korpus_calcul']/div[3]/div[1]/input"));
         calculate.click();
 
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id='psgv_resn']/table/tbody/tr[1]/td/strong")));
 
-        Assert.assertEquals(driver.findElement(By.xpath("//*[@id='psgv_resn']/table/tbody/tr[1]/td/strong")).getText(), "Ошибки в задинии:");
-
+        Assert.assertEquals(driver.findElement(By.xpath("//*[@id='psgv_resn']/table/tbody/tr[1]/td/strong")).getText(),
+                "Ошибки в задинии:");
     }
 
-    @AfterMethod
-    public void cleanEverything(){
+    @AfterTest
+    public void cleanEverything() {
         driver.quit();
     }
 }
