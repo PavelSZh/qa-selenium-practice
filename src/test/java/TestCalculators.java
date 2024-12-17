@@ -7,6 +7,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -81,31 +82,8 @@ public class TestCalculators {
 
     }
 
-//    @Test
-//    public void comments (){
-//
-//        WebElement commentClick = driver.findElement(By.xpath("//*[@id='korpus_calcul']/div[5]/span[2]/a"));
-//        commentClick.click();
-//
-//        try {
-//            Thread.sleep(4000);
-//        } catch (InterruptedException e) {
-//            throw new RuntimeException(e);
-//        }
-//
-//        WebElement field = driver.findElement(By.cssSelector("#app > div > div.grid > div.grid-header > div.app-chat-group > div > div > div > div > div.flex-col.app-position-relative > div.grouo-editor.flex-row.padding.flex-align-items-flex-start > div.flex-col.s-color-Main > textarea"));
-//        field.click();
-//        field.sendKeys("Test comment");
-//
-//        WebElement arrow = driver.findElement(By.xpath("//*[@id='app']/div/div[1]/div[1]/div[2]/div/div/div/div/div[2]/div[2]/div[2]/div/svg/path"));
-//        arrow.click();
-//
-//        Assert.assertEquals(driver.findElement(By.xpath("//*[@id='app']/div/div[1]/div[2]/div/div/div/div/div[1]")).getText(), "Log in by social network to comment in this chat");
-//    }
-
-    @AfterTest
+    @AfterMethod
     public void cleanEverything(){
         driver.quit();
     }
-
 }
