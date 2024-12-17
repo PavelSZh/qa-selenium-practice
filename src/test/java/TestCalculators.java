@@ -18,7 +18,7 @@ public class TestCalculators {
 
     @BeforeMethod
     public void preparations (){
-        System.setProperty("webdriver.chrome.driver", "/path/to/chromedriver");
+       // System.setProperty("webdriver.chrome.driver", "/path/to/chromedriver");
         driver = new ChromeDriver();
         wait = new WebDriverWait(driver, Duration.ofSeconds(5));
         driver.get("https://calculator888.ru/kalkulator-drobey");
