@@ -22,6 +22,7 @@ public class GoogleSearchTest {
     @BeforeMethod
     public void preparations() {
         WebDriverManager.chromedriver().setup();
+        System.setProperty("webdriver.chrome.driver", "/usr/bin/chromedriver");
 
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--headless");  // Безголовый режим
