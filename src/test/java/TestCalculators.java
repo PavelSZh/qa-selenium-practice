@@ -30,7 +30,7 @@ public class TestCalculators {
 
         wait = new WebDriverWait(driver, Duration.ofSeconds(5));
         driver.get("https://calculator888.ru/kalkulator-drobey");
-        driver.manage().window().maximize();
+        //driver.manage().window().maximize();
     }
 
     @Test

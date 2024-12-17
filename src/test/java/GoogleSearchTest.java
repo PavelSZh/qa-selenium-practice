@@ -31,7 +31,7 @@ public class GoogleSearchTest {
 
         wait = new WebDriverWait(driver, Duration.ofSeconds(5));
         driver.get("https://the-internet.herokuapp.com/");
-        driver.manage().window().maximize();
+        //driver.manage().window().maximize();
     }
 
     @Test
