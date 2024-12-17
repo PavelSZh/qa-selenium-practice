@@ -8,6 +8,7 @@ import org.testng.Assert;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
+import io.github.bonigarcia.wdm.WebDriverManager;
 
 import java.time.Duration;
 
@@ -18,7 +19,7 @@ public class TestCalculators {
 
     @BeforeMethod
     public void preparations (){
-       // System.setProperty("webdriver.chrome.driver", "/path/to/chromedriver");
+        WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver();
         wait = new WebDriverWait(driver, Duration.ofSeconds(5));
         driver.get("https://calculator888.ru/kalkulator-drobey");
