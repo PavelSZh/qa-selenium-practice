@@ -14,17 +14,21 @@ import java.time.Duration;
 
 public class GoogleSearchTest {
 
-    WebDriver driver = new ChromeDriver();
-    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+    WebDriver driver;
+    WebDriverWait wait;
 
     @BeforeMethod
-    public void preparations (){
+    public void preparations() {
+        // Инициализация драйвера в методе @BeforeMethod
+       // System.setProperty("webdriver.chrome.driver", "/path/to/chromedriver");
+        driver = new ChromeDriver();
+        wait = new WebDriverWait(driver, Duration.ofSeconds(5));
         driver.get("https://the-internet.herokuapp.com/");
         driver.manage().window().maximize();
     }
 
     @Test
-    public void dropEverything(){
+    public void testDropEverything() {
         driver.findElement(By.xpath("//*[@id='content']/ul/li[11]/a")).click();
 
         WebElement list = driver.findElement(By.xpath("//*[@id = 'dropdown']"));
@@ -33,7 +37,7 @@ public class GoogleSearchTest {
     }
 
     @Test
-    public void dragAndDropEverything(){
+    public void testDragAndDropEverything() {
         driver.findElement(By.xpath("//*[@id='content']/ul/li[10]/a")).click();
 
         WebElement a = driver.findElement(By.id("column-a"));
@@ -44,7 +48,7 @@ public class GoogleSearchTest {
     }
 
     @Test
-    public void contextRight (){
+    public void testContextRight() {
         driver.findElement(By.xpath("//*[@id='content']/ul/li[7]/a")).click();
 
         driver.findElement(By.id("hot-spot"));
@@ -54,7 +58,7 @@ public class GoogleSearchTest {
     }
 
     @Test
-    public void hovers (){
+    public void testHovers() {
         driver.findElement(By.xpath("//*[@id='content']/ul/li[25]/a")).click();
 
         WebElement image = driver.findElement(By.xpath("//*[@id='content']/div/div[1]/img"));
@@ -68,7 +72,8 @@ public class GoogleSearchTest {
     }
 
     @AfterTest
-    public void close (){
+    public void close() {
         driver.quit();
     }
 }
+
