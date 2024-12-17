@@ -13,11 +13,14 @@ import java.time.Duration;
 
 public class TestCalculators {
 
-    WebDriver driver = new ChromeDriver();
-    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(2));
+    private WebDriver driver;
+    private WebDriverWait wait;
 
     @BeforeMethod
     public void preparations (){
+        System.setProperty("webdriver.chrome.driver", "/path/to/chromedriver");
+        driver = new ChromeDriver();
+        wait = new WebDriverWait(driver, Duration.ofSeconds(5));
         driver.get("https://calculator888.ru/kalkulator-drobey");
         driver.manage().window().maximize();
     }

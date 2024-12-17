@@ -14,8 +14,8 @@ import java.time.Duration;
 
 public class GoogleSearchTest {
 
-    WebDriver driver;
-    WebDriverWait wait;
+    private WebDriver driver;
+    private WebDriverWait wait;
 
     @BeforeMethod
     public void preparations() {
