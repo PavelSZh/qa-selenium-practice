@@ -25,14 +25,13 @@ public class GoogleSearchTest {
         System.setProperty("webdriver.chrome.driver", "/usr/bin/chromedriver");
 
         ChromeOptions options = new ChromeOptions();
-        options.addArguments("--headless");  // Безголовый режим
-        options.addArguments("--disable-gpu");  // Отключение GPU
-        options.addArguments("--no-sandbox");  // Отключение песочницы
-        driver = new ChromeDriver(options);  // Используем Chrome с опциями
+        options.addArguments("--headless");
+        options.addArguments("--disable-gpu");
+        options.addArguments("--no-sandbox");
+        driver = new ChromeDriver(options);
 
         wait = new WebDriverWait(driver, Duration.ofSeconds(5));
         driver.get("https://the-internet.herokuapp.com/");
-        //driver.manage().window().maximize();
     }
 
     @Test
@@ -81,7 +80,9 @@ public class GoogleSearchTest {
 
     @AfterTest
     public void close() {
-        driver.quit();
+        if (driver != null) {
+            driver.quit();
+        }
     }
 }
 
